@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Diagnóstico Ambiental | Licenciamento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Importação do CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Ícones (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+    <h1>Descubra se sua atividade precisa de Licenciamento Ambiental</h1>
+    <p>
+        Em poucos passos, analisamos seu CNPJ, CNAE e enquadramento legal
+        junto aos órgãos ambientais competentes.
+    </p>
+    <button id= "botaoiniciar" onclick="iniciardiagnostico()">Iniciar diagnóstico ambiental</button>
+</section>
+
+<!-- ================= CONFIANÇA ================= -->
+
+<section id="trust" class="trust">
+    <div class="trust-item">
+        <i class="fa-solid fa-scale-balanced"></i>
+        <p>Análise baseada na legislação ambiental brasileira</p>
+    </div>
+    <div class="trust-item">
+        <i class="fa-solid fa-lock"></i>
+        <p>Sigilo e proteção de dados garantidos</p>
+    </div>
+    <div class="trust-item">
+        <i class="fa-solid fa-user-tie"></i>
+        <p>Atendimento técnico especializado</p>
+    </div>
+</section>
+
+<!-- ================= FORMULÁRIO INICIAL ================= -->
+
+<section id="form-section" class="hidden">
+    <h2>Informações iniciais</h2>
+
+    <form id="initialForm">
+        
+        <label>Qual seu nome completo?</label>
+        <input type="text" id="responsibleName" name="responsibleName" required />
+        
+        <label>Tipo de cadastro</label>
+        <select id="documentType" required name="documentType">
+            <option value="CNPJ">CNPJ</option>
+            <option value="CPF">CPF</option>
+        </select>
+
+        <label>Número do documento</label>
+        <input type="text" id="documentNumber" name="documentNumber" required />
+
+        <label>Nome da empresa</label>
+        <input type="text" id="name" name="name" required />
+
+        <label>CNAE(s) principal(is)</label>
+        <input type="text" id="cnae" name="cnae" required />
+
+        <label >Licença atual?</label>
+        <select id="licencaAtual" name="licencaAtual" required>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+
+        <label>Notificações ou autos?</label>
+          <select id="notificacoesAutosSelect" name="notificacoesAutosSelect" required>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+
+        <label>Se sim, detalhar notificações ou autos:</label>
+        <input type="text" id="notificacoesAutos" name="notificacoesAutos"/>
+
+        <label>Uso de recursos hídricos?</label>
+        <select id="usoRecursosHidricos" name="usoRecursosHidricos" required>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+
+        <label>Geração de resíduos?</label>
+        <select id="geracaoResiduos" name="geracaoResiduos" required>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+    
+        <label>Intervenção em vegetação?</label>
+        <select id="intervencaoVegetacao" name="intervencaoVegetacao" required>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+
+        <label >Estado</label>
+        <select id="estado" name="estado" required>
+            <option value="" disabled selected>Selecione o estado</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+        </select>
+
+        <label>Cidade</label>
+        <input type="text" id="address" name="address" required />
+        
+        <label>Telefone</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label>E-mail (o relatório será enviado aqui)</label>
+        <input type="email" id="email" name="email"  required />
+
+        <label>Outras informações:</label>
+        <textarea id="observacoes" name="observacoes" placeholder="Acrescente aqui as informações que julgue relevantes para o diagnóstico ambiental."></textarea>
+
+        <button id="submitBtn" type="submit">Avançar</button>
+    </form> 
+
+</section>
+
+<!-- ================= loading e UP para n8n ================ -->
+
+<section id="loader" class="hidden">
+    <h2>Processando diagnóstico ambiental...</h2>
+    <p>Aguarde alguns segundos enquanto analisamos suas informações.</p>
+    
+</section>
+
+<!-- ================= RESULTADO ================= -->
+
+<section id="result-section" class="hidden">
+    <h2>Resultado do Diagnóstico</h2>
+    <textarea id="resultContent"></textarea>
+     
+</section>
+
+<!-- ================= CONFIANÇA ================= -->
+
+<section class="hidden" id="confiaca">
+    <div class="trust-item">
+        <i class="fa-solid fa-scale-balanced"></i>
+        <p>Análise baseada na legislação ambiental rasileira</p>
+    </div>
+    <div class="trust-item">
+        <i class="fa-solid fa-lock"></i>
+        <p>Sigilo e proteção de dados garantidos</p>
+    </div>
+    <div class="trust-item">
+        <i class="fa-solid fa-user-tie"></i>
+        <p>Atendimento técnico especializado</p>
+    </div>
+</section>
+
+<section id="whatsapp" > 
+    <a href="https://wa.me/5575992552794?text=Olá,%20gostaria%20de%20mais%20informações." 
+   class="btn-whatsapp" 
+   target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp">
+    </a>
+</section>
+
+
+<!-- ================= RODAPÉ ================= -->
+<footer>
+    <p>Contato: SONARestudosambientais@gmail.com.br</p>
+    <p>
+        <a href="https://wa.me/5575992552794" target="_blank" style="background-color: #25D366; color: white; padding: 1px 5px; border-radius: 5px; text-decoration: none;">
+            Falar no WhatsApp
+        </a>
+    </p>
+    <small>
+        O diagnóstico não substitui licenças ambientais formais,
+        sendo um estudo técnico orientativo.
+    </small>    
+
+    
+</footer>
+
+<!-- Importação do JS -->
+<script src="script.js"></script>
+</body>
+</html>
+
+
