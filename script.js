@@ -25,7 +25,7 @@ document.getElementById("initialForm").addEventListener("submit", async function
     
     // Envia os dados para a API usando fetch
     try {
-        const response = await fetch("https://sonar.app.n8n.cloud/webhook/sonar", {
+        const response = await fetch("https://greencept.app.n8n.cloud/webhook-test/sonar", {
             method: "POST",
             // Envia como FormData (multipart/form-data)
             body: formData
@@ -69,6 +69,7 @@ window.addEventListener('scroll', function() {
         btn.style.opacity = '0.8';
     }
 });
+
 
 
 
