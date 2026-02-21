@@ -63,38 +63,11 @@ form button {
 
 /* loading e UP para n8n */
 #loader {
-    background: #38ada9;
+    background: hwb(184 22% 32%);
     padding: 20px;
     border-radius: 5px;
     text-align: center;
     color: #333
-}
-
-/* ESCOLHA DE FLUXO */
-.paths {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.path-card {
-    background: white;
-    padding: 25px;
-    flex: 1;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.path-card:hover {
-    background: #eafaf9;
-}
-
-.path-card i {
-    font-size: 40px;
-    margin-bottom: 15px;
-    color: #0a3d62;
 }
 
 /* RESULTADO */
@@ -178,4 +151,5 @@ footer {
 .btn-whatsapp:hover {
     background-color: #128c7e;
     transform: scale(1.1);
+
 }
